@@ -4,7 +4,7 @@ Bienvenue, pour récupérer le projet il suffit de ....
 
 # Lancer le projet
 
-Pour lancer le projet ...
+Pour lancer le projet QuizzConsole\bin\Debug\net6.0\QuizzConsole.exe
 
 # Les étapes de mon jeu de quizz :
 

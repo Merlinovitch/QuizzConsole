@@ -15,27 +15,45 @@ namespace QuizzConsole
             LaunchGame game = new LaunchGame();
             ScoreBoard score = new ScoreBoard();
             QuestionLoader questionLoader = new QuestionLoader();
-            Music music = new Music();
 
+            string filePath = @"QuestionsExample.csv";
+            List<Questions> listeQuestions = questionLoader.LoadCSV(filePath);
+            int nbQuestions = File.ReadLines(filePath).Count();
 
-
-            List<Questions> questionsList = questionLoader.LoadCSV(@"C:\Users\Utilisateur\Desktop\Simplon\QuizzConsole\QuestionsExample.csv");
 
             accueil.WelcomePlayer();
-            Music.takeOnMe();
 
-            foreach (Questions question in questionsList)
+
+            foreach (Questions question in listeQuestions)
             {
                 Console.WriteLine(question.Question);
-                Console.WriteLine("1. " + question.Reponse1);
-                Console.WriteLine("2. " + question.Reponse2);
-                Console.WriteLine("3. " + question.Reponse3);
+                Console.WriteLine("1. " + question.Reponses[0]);
+                Console.WriteLine("2. " + question.Reponses[1]);
+                Console.WriteLine("3. " + question.Reponses[2]);
                 Console.Write("Réponse : ");
-                game.LaunchQuizz(question, score);
+                game.LaunchQuizz(question, score, listeQuestions);
             }
 
-            Console.WriteLine("Score final : " + score.score + " points");
+            Console.WriteLine($"Score final : {score.score}/{nbQuestions} points");
+            if (score.score < nbQuestions / 4)
+            {
+                Console.WriteLine("Dommage, tu n'as pas reussi");
+            }
+            else if (score.score >= nbQuestions / 4 && score.score < nbQuestions / 2)
+            {
+                Console.WriteLine("Bof bof !");
+            }
+            else if (score.score >= nbQuestions / 2 && score.score < nbQuestions * 0.75)
+            {
+                Console.WriteLine("Pas trop mal !");
 
+            }
+            else
+            {
+                Console.WriteLine("Bravo !");
+            }
+
+            Console.ReadLine();
 
 
         }
@@ -70,7 +88,7 @@ LLLLLLLLLLLLLLLLLLLLLLLL    eeeeeeeeeeeeee            QQQQQQQQ::::QQ    uuuuuuuu
                                                                                                                                 
                                                                                                                                 
                                                                                                                                 ");
-                Console.WriteLine("Appuyez sur entrée pour commencer");
+                Console.WriteLine("\nAppuyez sur entrée pour commencer");
                 Console.ReadLine();
             }
         }
@@ -78,18 +96,14 @@ LLLLLLLLLLLLLLLLLLLLLLLL    eeeeeeeeeeeeee            QQQQQQQQ::::QQ    uuuuuuuu
         public class Questions
         {
             public string Question { get; private set; }
-            public string Reponse1 { get; private set; }
-            public string Reponse2 { get; private set; }
-            public string Reponse3 { get; private set; }
+            public string[] Reponses { get; private set; }
 
             public int BonneRep { get; private set; }
 
-            public Questions(string question, string reponse1, string reponse2, string reponse3, int bonneRep)
+            public Questions(string question, string[] reponses, int bonneRep)
             {
                 Question = question;
-                Reponse1 = reponse1;
-                Reponse2 = reponse2;
-                Reponse3 = reponse3;
+                Reponses = reponses;
                 BonneRep = bonneRep;
             }
         }
@@ -118,7 +132,7 @@ LLLLLLLLLLLLLLLLLLLLLLLL    eeeeeeeeeeeeee            QQQQQQQQ::::QQ    uuuuuuuu
 
                     int bonneRep = int.Parse(colonnes[2]);
 
-                    Questions newQuestion = new Questions(questionText, reponse1, reponse2, reponse3, bonneRep);
+                    Questions newQuestion = new Questions(questionText, reponses, bonneRep);
 
                     listeQuestions.Add(newQuestion);
                 }
@@ -131,7 +145,7 @@ LLLLLLLLLLLLLLLLLLLLLLLL    eeeeeeeeeeeeee            QQQQQQQQ::::QQ    uuuuuuuu
     public class LaunchGame
     {
 
-        public void LaunchQuizz(QuizzConsole.Questions question, ScoreBoard score)
+        public void LaunchQuizz(QuizzConsole.Questions question, ScoreBoard score, List<QuizzConsole.Questions> listeQuestions)
         {
 
             int choixUser;
@@ -142,7 +156,7 @@ LLLLLLLLLLLLLLLLLLLLLLLL    eeeeeeeeeeeeee            QQQQQQQQ::::QQ    uuuuuuuu
 
                 if (choixUser == bonneRepIndex)
                 {
-                    Console.WriteLine("Bonne réponse");
+                    Console.WriteLine("\n--- Bonne réponse ---");
                     score.IncrementScore();
                     Console.WriteLine("Score : " + score.score + " points \n");
                     Console.WriteLine("Appuyez sur entrée pour continuer \n");
@@ -150,9 +164,11 @@ LLLLLLLLLLLLLLLLLLLLLLLL    eeeeeeeeeeeeee            QQQQQQQQ::::QQ    uuuuuuuu
                 }
                 else
                 {
-                    Console.WriteLine("Mauvaise réponse");
-                    Console.WriteLine("La bonne réponse était " + bonneRepIndex);
-                    Console.WriteLine("Question suivante\n");
+                    Console.WriteLine("\n--- Mauvaise réponse ---");
+                    Console.WriteLine("La bonne réponse était " + question.Reponses[bonneRepIndex - 1] + "\n");
+                    Console.WriteLine("Appuyez sur entrée pour continuer \n");
+                    Console.ReadLine();
+
 
                 }
 
@@ -161,7 +177,7 @@ LLLLLLLLLLLLLLLLLLLLLLLL    eeeeeeeeeeeeee            QQQQQQQQ::::QQ    uuuuuuuu
             {
                 Console.WriteLine("La réponse doit être 1, 2 ou 3");
                 Console.Write("Réponse : ");
-                LaunchQuizz(question, score);
+                LaunchQuizz(question, score, listeQuestions);
             }
         }
 
@@ -176,58 +192,5 @@ LLLLLLLLLLLLLLLLLLLLLLLL    eeeeeeeeeeeeee            QQQQQQQQ::::QQ    uuuuuuuu
             score++;
         }
     }
-    public class Music
-    {
-        public static void takeOnMe()
-        {
-            Console.Beep(369, 200);
-            Console.Beep(369, 200);
-            Console.Beep(369, 200);
-            Console.Beep(293, 200);
-            Console.Beep(246, 200);
-            Console.Beep(329, 200);
-            Console.Beep(329, 200);
-            Console.Beep(329, 200);
-            Console.Beep(415, 200);
-            Console.Beep(415, 200);
-            Console.Beep(440, 200);
-            Console.Beep(493, 200);
-            Console.Beep(440, 200);
-            Console.Beep(440, 200);
-            Console.Beep(440, 200);
-            Console.Beep(329, 200);
-            Console.Beep(293, 200);
-            Console.Beep(369, 200);
-            Console.Beep(369, 200);
-            Console.Beep(369, 200);
-            Console.Beep(329, 200);
-            Console.Beep(329, 200);
-            Console.Beep(369, 200);
-            Console.Beep(329, 200);
-            Console.Beep(369, 200);
-            Console.Beep(369, 200);
-            Console.Beep(369, 200);
-            Console.Beep(293, 200);
-            Console.Beep(246, 200);
-            Console.Beep(329, 200);
-            Console.Beep(329, 200);
-            Console.Beep(329, 200);
-            Console.Beep(415, 200);
-            Console.Beep(415, 200);
-            Console.Beep(440, 200);
-            Console.Beep(493, 200);
-            Console.Beep(440, 200);
-            Console.Beep(440, 200);
-            Console.Beep(440, 200);
-            Console.Beep(329, 200);
-            Console.Beep(293, 200);
-            Console.Beep(369, 200);
-            Console.Beep(369, 200);
-            Console.Beep(369, 200);
-            Console.Beep(329, 200);
-            Console.Beep(329, 200);
-            Console.Beep(369, 200);
-            Console.Beep(329, 200);
-        }
-    }
+
 }
