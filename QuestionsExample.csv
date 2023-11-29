@@ -1,8 +1,20 @@
-Qui est Margaret Hamilton ?;une championne de ping pong/une pilote de F1/une informaticienne de légende;3
-Quel flim n'est pas un flim sur le cyclimse ?;Le tour de France/Breaking Away/La classe américaine;3
-Qui peut accéder à un attribut protected d'une classe en C# ?;ses classes dérivées/sa mère/son père/toutes les classes du même domaine;1
-Qui est l'homme le plus classe du monde ?;Dave Callaghan/Georges Abitbol/Peter;2
-Que permet le raccourci F9 sous Visual Studio Code ?;Mettre un signet/Mettre un point d'arrêt/Naviguer vers la définition;2
-Quelle commande permet de vérifier la version installée du sdk de .net ?;dotnet -v/dotnet --list-sdks/dotnet version;2
-Quelle est la couleur du cheval blanc d'Henri IV;Blanc/Marron/La réponse D;1
-Laquelle de ces chansons n'est pas une chanson de Johnny ?;Gabrielle/Je te donne/Requiem pour un fou;2
+Quelle est la capitale de la France ?;Paris/Londres/Berlin;1;Géographie
+Qui a peint la Joconde ?;Leonard de Vinci/Picasso/Van Gogh;1;Art
+Quel est l'organe responsable de la pompe du corps humain ?;Cœur/Reins/Estomac;1;Sciences
+Combien de continents y a-t-il dans le monde ?;5/6/7;3;Géographie
+Quel est l'animal national de l'Australie ?;Kangourou/Koala/Émeu;1;Géographie
+Quelle est la plus grande planète du système solaire ?;Jupiter/Saturne/Mars;1;Sciences
+Qui a écrit "Romeo et Juliette" ?;William Shakespeare/Charles Dickens/Jane Austen;1;Littérature
+Quelle est la langue la plus parlée dans le monde ?;Mandarin/Anglais/Espagnol;1;Langues
+Quel est le plus haut sommet du monde ?;Mont Everest/Mont Kilimandjaro/Mont Blanc;1;Géographie
+Qui a découvert la gravité avec une pomme ?;Isaac Newton/Albert Einstein/Galileo Galilei;1;Sciences
+Quel est le plus grand océan du monde ?;Pacifique/Atlantique/Indien;1;Géographie
+Quel est le symbole chimique de l'or ?;Au/Ag/Fe;1;Sciences
+Qui a peint "Les Tournesols" ?;Vincent van Gogh/Pablo Picasso/Claude Monet;1;Art
+Quel est le plus long fleuve du monde ?;Nil/Amazone/Mississippi;2;Géographie
+Quel est le monument emblématique de l'Inde ?;Taj Mahal/Colisée/Statue de la Liberté;1;Géographie
+Qui a écrit "1984" ?;George Orwell/Aldous Huxley/Ray Bradbury;1;Littérature
+Quelle est la distance approximative de la Terre au Soleil ?;150 millions de kilomètres/100 millions de kilomètres/200 millions de kilomètres;1;Sciences
+Quelle est la capitale du Japon ?;Tokyo/Kyoto/Osaka;1;Géographie
+Qui a peint "La Nuit étoilée" ?;Vincent van Gogh/Pablo Picasso/Claude Monet;1;Art
+Quel est le processus par lequel les plantes produisent de la nourriture ?;Photosynthèse/Respiration/Évaporation;1;Sciences

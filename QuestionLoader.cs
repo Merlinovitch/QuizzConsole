@@ -30,8 +30,9 @@ namespace QuizzConsole
                     string reponse3 = reponses[2];
 
                     int bonneRep = int.Parse(colonnes[2]);
+                    string categorie = colonnes[3];
 
-                    Questions newQuestion = new Questions(questionText, reponses, bonneRep);
+                    Questions newQuestion = new Questions(questionText, reponses, bonneRep, categorie);
 
                     listeQuestions.Add(newQuestion);
                 }

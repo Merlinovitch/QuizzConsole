@@ -15,13 +15,21 @@ namespace QuizzConsole
             LaunchGame game = new LaunchGame();
             ScoreBoard score = new ScoreBoard();
             QuestionLoader questionLoader = new QuestionLoader();
+            Categories categories = new Categories();
+
 
             string filePath = "QuestionsExample.csv";
             List<Questions> listeQuestions = questionLoader.LoadCSV(filePath);
+            List<string> categoriesList = listeQuestions.Select(q => q.Categorie).Distinct().ToList();
             int nbQuestions = File.ReadLines(filePath).Count();
 
 
             accueil.WelcomePlayer();
+            string selectedCategory = categories.ChoixCategories(listeQuestions);
+
+            Console.WriteLine($"Choix de la catégorie : {selectedCategory}");
+
+
 
 
             foreach (Questions question in listeQuestions)
@@ -58,5 +66,4 @@ namespace QuizzConsole
 
         }
     }
-
 }
