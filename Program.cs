@@ -21,12 +21,17 @@ namespace QuizzConsole
                 QuestionLoader questionLoader = new QuestionLoader();
                 Categories categories = new Categories();
                 AddQuestion addQuestion = new AddQuestion();
+                DeleteQuestion deleteQuestion = new DeleteQuestion();
 
                 //Accueil du joueur //
                 accueil.WelcomePlayer();
 
                 //Proposer d'ajouter une question ou non//
                 addQuestion.AjoutQuestion();
+
+                //Supprimer une question//
+                deleteQuestion.SuppQuestion();
+
 
                 //Récuperer les questions et catégories//
                 string filePath = questionLoader.getFilePath();

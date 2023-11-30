@@ -7,13 +7,17 @@ namespace QuizzConsole
     {
         public class AddQuestion
         {
-            string filePath = @"bin\Debug\net6.0\QuestionsExample.csv";
+
+
 
             public string? AjoutQuestion()
             {
+                QuestionLoader questionLoader = new QuestionLoader();
+                string filePath = questionLoader.getFilePath();
                 Console.WriteLine("Ecrire a pour ajouter une nouvelle question, n'importe quelle autre commande pour continuer");
                 string? choixUser = Console.ReadLine();
-                if (choixUser == "a")
+
+                if (choixUser == "a" || choixUser == "A")
                 {
                     try
                     {
@@ -45,7 +49,13 @@ namespace QuizzConsole
                                 sw.WriteLine(nouvelleLigne);
 
                                 Console.WriteLine($"Votre question : {nouvelleQuestion} a bien été ajoutée dans la catégorie {nouvelleCategorie}\n");
-                                return nouvelleLigne;
+                                Console.WriteLine("Voulez vous en ajouter une autre ? (o/n)");
+                                string? suppAgain = Console.ReadLine();
+
+                                if (suppAgain == "o" || suppAgain == "O")
+                                {
+                                    AjoutQuestion();
+                                }
 
                             }
                         }
