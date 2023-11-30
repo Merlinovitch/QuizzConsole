@@ -32,31 +32,36 @@ namespace QuizzConsole
                         Console.WriteLine(i + 1 + ". " + questions[i][0]);
                     }
                     Console.WriteLine("Entrez le numéro de la question à supprimer :");
-                    int questionASupp = int.Parse(Console.ReadLine());
-                    lignes = lignes.Where((line, index) => (index + 1) != questionASupp).ToArray();
-                    File.WriteAllLines(filePath, lignes);
-                    Console.WriteLine($"La question " + questionASupp + " a bien été supprimée");
+                    string? userInput = Console.ReadLine();
 
-                    Console.WriteLine("Voulez vous en supprimer une autre ? (o/n)");
-                    string? suppAgain = Console.ReadLine();
-
-                    if (suppAgain == "o" || suppAgain == "O")
+                    if (int.TryParse(userInput, out int questionASupp) && questionASupp > 0 && questionASupp <= questions.Count)
                     {
+                        lignes = lignes.Where((line, index) => (index + 1) != questionASupp).ToArray();
+                        File.WriteAllLines(filePath, lignes);
+                        Console.WriteLine($"La question " + questionASupp + " a bien été supprimée");
+
+                        Console.WriteLine("Voulez vous en supprimer une autre ? (o/n)");
+                        string? suppAgain = Console.ReadLine();
+
+                        if (suppAgain == "o" || suppAgain == "O")
+                        {
+                            SuppQuestion();
+                        }
+                        else if (choixUser == "n" || choixUser == "N")
+                        {
+
+                        }
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Veuillez entrer un numéro valide.");
                         SuppQuestion();
                     }
-                    else if (choixUser == "n" || choixUser == "N")
-                    {
-
-                    }
-
-                }
-                else
-                {
-
                 }
             }
         }
-    }
 
+    }
 }
 
