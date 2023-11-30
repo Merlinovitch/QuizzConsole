@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace QuizzConsole
@@ -10,7 +11,7 @@ namespace QuizzConsole
         {
             QuestionLoader questionLoader = new QuestionLoader();
 
-            public string  ChoixCategories(List<Questions> listeQuestion)
+            public string ChoixCategories(List<Questions> listeQuestion)
             {
                 Console.WriteLine("Choix de la catégorie :");
                 List<string> categories = questionLoader.LoadCSV("QuestionsExample.csv").Select(q => q.Categorie).Distinct().ToList();
@@ -19,17 +20,24 @@ namespace QuizzConsole
                 {
                     Console.WriteLine($"{i + 1} : {categories[i]}");
                 }
-                Console.WriteLine("Tapez un nombre entre 1 et " + categories.Count + " \n");
+                Console.WriteLine("Tapez un nombre entre 1 et " + categories.Count + " ou 9 pour une categorie aleatoire\n");
 
                 int choixUserCategory;
+
                 if (int.TryParse(Console.ReadLine(), out choixUserCategory) && choixUserCategory >= 1 && choixUserCategory <= categories.Count)
                 {
-                    
+
                     return categories[choixUserCategory - 1];
                 }
-                else { 
-            Console.WriteLine("Choix invalide, sélectionnez à nouveau.");
-            return ChoixCategories(listeQuestion); }
+                if (choixUserCategory == 9)
+                {
+                    return categories[Random.Shared.Next(0, categories.Count)];
+                }
+                else
+                {
+                    Console.WriteLine("Choix invalide, sélectionnez à nouveau.");
+                    return ChoixCategories(listeQuestion);
+                }
 
             }
         }

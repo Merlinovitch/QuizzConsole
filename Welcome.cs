@@ -9,6 +9,8 @@ namespace QuizzConsole
             public void WelcomePlayer()
             {
                 Console.WriteLine("Bonjour, bienvenue sur ce Quizz");
+                Console.WriteLine("\nAppuyez sur entrée pour commencer");
+                Console.ReadLine();
                 Console.Write(@"                                                                                                                                
                                                                                                                                 
 LLLLLLLLLLL                                           QQQQQQQQQ                         iiii                                    
@@ -34,8 +36,8 @@ LLLLLLLLLLLLLLLLLLLLLLLL    eeeeeeeeeeeeee            QQQQQQQQ::::QQ    uuuuuuuu
                                                                                                                                 
                                                                                                                                 
                                                                                                                                 ");
-                Console.WriteLine("\nAppuyez sur entrée pour commencer");
-                Console.ReadLine();
+
+                Console.WriteLine("\n");
             }
         }
     }

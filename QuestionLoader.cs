@@ -9,8 +9,6 @@ namespace QuizzConsole
         public class QuestionLoader
         {
 
-
-
             public List<Questions> LoadCSV(string cheminFichier)
             {
                 List<string[]> lignes = File.ReadAllLines(cheminFichier)
