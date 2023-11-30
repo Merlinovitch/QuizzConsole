@@ -14,6 +14,7 @@ namespace QuizzConsole
             bool rejouer = true;
             while (rejouer)
             {
+                //Initialisation des instances//
                 Welcome accueil = new Welcome();
                 LaunchGame game = new LaunchGame();
                 ScoreBoard score = new ScoreBoard();
@@ -21,21 +22,26 @@ namespace QuizzConsole
                 Categories categories = new Categories();
                 AddQuestion addQuestion = new AddQuestion();
 
+                //Accueil du joueur //
                 accueil.WelcomePlayer();
 
+                //Proposer d'ajouter une question ou non//
                 addQuestion.AjoutQuestion();
 
-
+                //Récuperer les questions et catégories//
                 string filePath = "QuestionsExample.csv";
                 List<Questions> listeQuestions = questionLoader.LoadCSV(filePath);
                 List<string> categoriesList = listeQuestions.Select(q => q.Categorie).Distinct().ToList();
-                int nbQuestions = File.ReadLines(filePath).Count();
-                string selectedCategory = categories.ChoixCategories(listeQuestions);
 
+                int nbQuestions = File.ReadLines(filePath).Count();
+
+                string selectedCategory = categories.ChoixCategories(listeQuestions);
                 Console.WriteLine($"Choix de la catégorie : {selectedCategory}\n");
                 listeQuestions.RemoveAll(q => q.Categorie != selectedCategory);
                 nbQuestions = listeQuestions.Count();
 
+
+                //Poser les questions//
                 foreach (Questions question in listeQuestions)
                 {
                     Console.WriteLine(question.Question);
@@ -46,6 +52,7 @@ namespace QuizzConsole
                     game.LaunchQuizz(question, score, listeQuestions);
                 }
 
+                //Résultats
                 Console.WriteLine($"Score final : {score.score}/{nbQuestions} points");
                 if (score.score < nbQuestions / 4)
                 {
@@ -65,12 +72,14 @@ namespace QuizzConsole
                     Console.WriteLine("Bravo !");
                 }
 
+                //Rejouer ou fermer//
                 Console.WriteLine("Quizz Terminé");
                 Console.WriteLine("Voulez-vous rejouer ? (o/n)");
                 string? reponse = Console.ReadLine();
                 switch (reponse)
                 {
                     case "o":
+                        Console.Clear();
                         rejouer = true;
                         break;
                     case "n":
