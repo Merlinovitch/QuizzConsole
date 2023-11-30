@@ -10,7 +10,7 @@ namespace QuizzConsole
         {
             QuestionLoader questionLoader = new QuestionLoader();
 
-            public string ChoixCategories(List<Questions> listeQuestion)
+            public string  ChoixCategories(List<Questions> listeQuestion)
             {
                 Console.WriteLine("Choix de la catégorie :");
                 List<string> categories = questionLoader.LoadCSV("QuestionsExample.csv").Select(q => q.Categorie).Distinct().ToList();
@@ -24,6 +24,7 @@ namespace QuizzConsole
                 int choixUserCategory;
                 if (int.TryParse(Console.ReadLine(), out choixUserCategory) && choixUserCategory >= 1 && choixUserCategory <= categories.Count)
                 {
+                    
                     return categories[choixUserCategory - 1];
                 }
                 else { 

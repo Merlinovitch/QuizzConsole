@@ -27,10 +27,10 @@ namespace QuizzConsole
             accueil.WelcomePlayer();
             string selectedCategory = categories.ChoixCategories(listeQuestions);
 
+
             Console.WriteLine($"Choix de la catégorie : {selectedCategory}");
-
-
-
+            listeQuestions.RemoveAll(q => q.Categorie != selectedCategory);
+            nbQuestions = listeQuestions.Count();
 
             foreach (Questions question in listeQuestions)
             {
