@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace QuizzConsole
         public class QuestionLoader
         {
 
-            public List<Questions> LoadCSV(string cheminFichier)
+            public List<Questions> LoadCSV(string filePath)
             {
-                List<string[]> lignes = File.ReadAllLines(cheminFichier)
+                List<string[]> lignes = File.ReadAllLines(filePath)
                                         .Select(line => line.Split(";"))
                                         .ToList();
 
@@ -38,7 +39,41 @@ namespace QuizzConsole
                 return listeQuestions;
 
             }
+
+            public string getFilePath()
+            {
+                string executablePath = AppContext.BaseDirectory;
+
+                if (executablePath.Contains("bin"))
+                {
+                    string filePath = Path.Combine(executablePath, @"QuestionsExample.csv");
+                    if (File.Exists(filePath))
+                    {
+                        return filePath;
+                    }
+                    else
+                    {
+                        throw new FileNotFoundException("Le fichier n'existe pas option 1 : " + filePath);
+                    }
+                }
+                else
+                {
+                    string relativePath = "QuestionsExample.csv";
+                    string filePath = Path.Combine(executablePath, relativePath);
+                    if (File.Exists(filePath))
+                    {
+                        return filePath;
+                    }
+                    else
+                    {
+                        throw new FileNotFoundException("Le fichier n'existe pas option 2 : " + filePath);
+                    }
+                }
+            }
+
+
         }
     }
-
 }
+
+

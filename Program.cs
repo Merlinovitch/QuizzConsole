@@ -29,7 +29,7 @@ namespace QuizzConsole
                 addQuestion.AjoutQuestion();
 
                 //Récuperer les questions et catégories//
-                string filePath = "QuestionsExample.csv";
+                string filePath = questionLoader.getFilePath();
                 List<Questions> listeQuestions = questionLoader.LoadCSV(filePath);
                 List<string> categoriesList = listeQuestions.Select(q => q.Categorie).Distinct().ToList();
 

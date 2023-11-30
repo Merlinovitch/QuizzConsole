@@ -13,8 +13,10 @@ namespace QuizzConsole
 
             public string ChoixCategories(List<Questions> listeQuestion)
             {
+                string filePath = questionLoader.getFilePath();
+
                 Console.WriteLine("Choix de la catégorie :");
-                List<string> categories = questionLoader.LoadCSV("QuestionsExample.csv").Select(q => q.Categorie).Distinct().ToList();
+                List<string> categories = questionLoader.LoadCSV(filePath).Select(q => q.Categorie).Distinct().ToList();
 
                 foreach (int i in Enumerable.Range(0, categories.Count))
                 {

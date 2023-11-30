@@ -7,7 +7,8 @@ namespace QuizzConsole
     {
         public class AddQuestion
         {
-            string filePath = "QuestionsExample.csv";
+            string filePath = @"bin\Debug\net6.0\QuestionsExample.csv";
+
             public string? AjoutQuestion()
             {
                 Console.WriteLine("Ecrire a pour ajouter une nouvelle question, n'importe quelle autre commande pour continuer");
@@ -56,6 +57,7 @@ namespace QuizzConsole
                 }
                 else
                 {
+                    return null;
 
                 }
                 return null;
