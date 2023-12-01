@@ -43,35 +43,27 @@ namespace QuizzConsole
             public string getFilePath()
             {
                 string executablePath = AppContext.BaseDirectory;
+                string folderName = "QuizzConsole";
+                string fileName = "QuestionsExample.csv";
 
-                if (executablePath.Contains("bin"))
+                int index = executablePath.IndexOf(folderName);
+
+                if (index != -1)
                 {
-                    string filePath = Path.Combine(executablePath, @"QuestionsExample.csv");
-                    if (File.Exists(filePath))
-                    {
-                        return filePath;
-                    }
-                    else
-                    {
-                        throw new FileNotFoundException("Le fichier n'existe pas option 1 : " + filePath);
-                    }
+                    string filePath = executablePath.Substring(0, index + folderName.Length + 1) + fileName;
+                    Console.WriteLine($"Executable path = {executablePath} \n File Path = {filePath}");
+
+                    return filePath;
                 }
+
+
                 else
                 {
-                    string relativePath = "QuestionsExample.csv";
-                    string filePath = Path.Combine(executablePath, relativePath);
-                    if (File.Exists(filePath))
-                    {
-                        return filePath;
-                    }
-                    else
-                    {
-                        throw new FileNotFoundException("Le fichier n'existe pas option 2 : " + filePath);
-                    }
+                    Console.WriteLine("Path not found");
+                    return string.Empty;
                 }
+
             }
-
-
         }
     }
 }
