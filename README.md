@@ -11,6 +11,7 @@ Pour lancer le projet depuis le terminal :
 
 ```bash
     git clone https://github.com/Merlinovitch/QuizzConsole.git
+    cd QuizzConsole
     dotnet build
     dotnet run
 ```
