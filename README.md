@@ -1,59 +1,36 @@
-# Récupérer le projet
 
-Bienvenue, pour récupérer le projet il suffit de ....
+# Quiz Console
 
-# Lancer le projet
+Un quiz sur la console. Contient une liste de questions rangées par catégories sur un CSV avec possibilité de créer de nouvelles questions et catégories et d'en supprimer.
 
-Pour lancer le projet QuizzConsole\bin\Debug\net6.0\QuizzConsole.exe
 
-# Les étapes de mon jeu de quizz :
 
-Pour se faciliter la vie, on a au début une seule catégorie. Chaque titre et sous titre de ce readme.md doit être transformé en méthode.
+## Lancer le projet
 
-## Ecrire les questions en "dur" dans le code
+Pour lancer le projet depuis le terminal :
 
-3 questions récupérées en "dur" dans un premier temps
+```bash
+    git clone https://github.com/Merlinovitch/QuizzConsole.git
+    dotnet build
+    dotnet run
+```
 
-- ` var questionUne = "Et sinon ça va ?"`
-- ` var reponseUne = "Ouais et toi ?"`
-- ` var reponseDeux = "Non pas trop frère."`
-- ` var reponseTrois = "C'est la hess."`
 
-## Depuis un fichier dans un second temps
+## Auteur
 
-### Récupérer la premier ligne du fichier CSV
+- [@Merlinovitch](https://www.github.com/Merlinovitch)
 
-Utilisation de la méthode ... pour récupérer lSéparer les champs ...
 
-### Récupérer la liste des questions
+## Features
 
-Quelle est la structure de ma liste de questions ?
+- Créér une nouvelle question et/ou catégorie
+- Supprimer une question
+- Calcul du score en fonction de la catégorie + commentaire sur le score
+- Rejouer
 
-- **Les différents type de collection**
 
-1. List<>
-2. Dictionnary<>
-3. string[]
+## 🔗 Links
 
-Si on fait un tableau de string pour lister les intitulés, comment lier chaque question à ses réponses ?
-Il est temps de construire des classes : une classe Question qui contient une liste de réponse.
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alexandre-merlin-82a395a8/)
 
-## Acceuillir le joueur
 
-## Demander la catégorie (dans un second temps) et filtrer la liste des questions
-
-## Parcourir les questions (boucle)
-
-Pour chacune d'entre elles
-
-1. **Poser la question**
-
-2. **Donner les réponses possibles**
-
-3. **Vérifier si la réponse est bonne/mauvaise/une erreur**
-
-4. **Informer l'utilisateur du résultat et afficher son score**
-
-5. **Boucler**
-
-## Afficher un message d'au revoir avec le score lorsque l'ensemble des questions ont été posées
