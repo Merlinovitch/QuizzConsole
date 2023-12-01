@@ -8,8 +8,6 @@ namespace QuizzConsole
         public class AddQuestion
         {
 
-
-
             public string? AjoutQuestion()
             {
                 QuestionLoader questionLoader = new QuestionLoader();
@@ -21,8 +19,6 @@ namespace QuizzConsole
                 {
                     try
                     {
-
-
 
                         Console.WriteLine("Ajout d'une nouvelle question");
                         Console.Write("Question : ");
